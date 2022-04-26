@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<meta charset="utf-8">
+   		<title>Wordle Solver</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+
+	<body>	
+        <center>
+        <div style="width: 80%;border-radius: 25px;margin-top: 1%;margin-bottom: 10px;padding-bottom: 10px;background-color: white;">
+
+        <center>
+        <h1 style=" color: #0C2340;font-size: 500%;padding-top: 10px;">Wordle Solver</h1>
+        <center>
+
+		<p>In the first box, enter the word you entered into Wordle.</p>
+		<p>In the second box, enter the coloring result of that word.</p>
+		<p>a = gray, y = yellow, g = green</p>
+		<p>For example, if the colors were gray, gray, green, yellow, green, enter 'aagyg'.</p>
+		<p>The algorithm will then print the best next words to put into Wordle.</p>
+		<p>Click 'reset' to reset the algorithm.</p>
+
+        <div id="container">
+            <form action="submitGuess" method="POST" class="form">
+                <input id="guess" type="text" placeholder="Guess" minlength="1" name="guess" style="background-color: white; color: #0C2340; padding: 16px 32px; text-decoration: inherit; margin: 4px 2px; text-align: center; cursor: pointer;" />
+                <br>
+                <input id="colors" type="text" placeholder="Colors" minlength="1" name="colors" style="background-color: white; color: #0C2340; padding: 16px 32px; text-decoration: inherit; margin: 4px 2px; text-align: center; cursor: pointer;margin-bottom: 10px;" />
+                <br>
+                <button name="submit" id="sub" type="Submit" title="SEARCH" style="background-color: #0C2340; color: white; padding: 16px 32px; text-decoration: inherit; margin: 4px 2px; text-align: center; cursor: pointer;border-radius: 50px; border-color: #0C2340;">SUBMIT</button>
+            </form>
+        </div>
+
+        {% if haveGuesses %}
+            <h2 style=" color: #0C2340;font-size: 300%;">Next best words:</h2>            
+            <p>Top word is the best to play, but choose whichever you want.</p>
+                
+            <div >
+                {% for guess in guesses %}
+                	<center>
+                    <p style="font-size: 200%;"> {{guess.string}} </p>
+                    </center>
+                {% endfor %}
+            </div> 
+
+            <div id="container">
+                <form action="reset">
+                    <button name="reset" id="sub" type="Submit" title="RESET" style="background-color: #0C2340; color: white; padding: 16px 32px; text-decoration: inherit; margin: 4px 2px; text-align: center; cursor: pointer;border-radius: 50px; border-color: #0C2340;">RESET</button>
+                </form>
+            </div>
+
+        {% endif %}
+
+        </div>
+        </center>
+	</body>
+</html>
