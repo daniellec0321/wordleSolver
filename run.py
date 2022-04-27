@@ -8,7 +8,7 @@ base = 'index.html'
 
 # importing my classes
 import Word
-import funcs
+import solverFuncs as funcs
 
 # global variables
 the_words = list()
@@ -99,7 +99,7 @@ def main():
     funcs.read_file(the_words)
     funcs.init_letter_map(letter_map)
 
-    app.run(host=getIP(), port=80)
+    app.run(host=getIP(), port=5001)
     pass
 
 
