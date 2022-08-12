@@ -40,8 +40,8 @@ def index():
     guesses, the_words = funcs.find_words(letter_map, the_words, num_tries)
     num_tries += 1
 
-    if (len(guesses) == 0):
-        return reset()
+    # if (len(guesses) == 0):
+        # return reset()
 
     return render_template(base, guesses=guesses, haveGuesses=(len(guesses)>0))
 
