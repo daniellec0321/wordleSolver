@@ -9,7 +9,7 @@ from string import ascii_lowercase
 def read_file(the_words):
 
     # read file
-    with open('common-words.txt') as f:
+    with open('wordFiles/common-words.txt') as f:
         the_strings = f.readlines()
 
     # initializing variables
@@ -22,7 +22,7 @@ def read_file(the_words):
         iter += 1
 
     # read in info words
-    with open('info-words.txt') as f2:
+    with open('wordFiles/info-words.txt') as f2:
         for line in f2:
             temp_word = Word(line.rstrip(), the_map)
             the_words.append(temp_word)
